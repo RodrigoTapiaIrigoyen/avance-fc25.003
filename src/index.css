@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-game-primary via-game-secondary to-game-primary text-white min-h-screen antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1 {
+    @apply text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-game-accent to-purple-500;
+  }
+
+  h2 {
+    @apply text-3xl font-bold;
+  }
+
+  h3 {
+    @apply text-2xl font-bold;
+  }
+
+  h4 {
+    @apply text-xl font-bold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply relative bg-gradient-to-r from-game-accent to-purple-500 hover:from-purple-500 hover:to-game-accent text-white font-semibold py-2 px-6 rounded-md transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-game-accent/20;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-700/50 backdrop-blur-sm hover:bg-gray-600 text-white font-semibold py-2 px-6 rounded-md transition-all duration-300 transform hover:scale-105;
+  }
+
+  .btn-outline {
+    @apply border-2 border-game-accent text-game-accent hover:bg-game-accent hover:text-white font-semibold py-2 px-6 rounded-md transition-all duration-300 transform hover:scale-105;
+  }
+
+  .input-primary {
+    @apply w-full bg-game-secondary/50 backdrop-blur-sm border border-gray-700 rounded-md px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-game-accent transition-all duration-300;
+  }
+
+  .card {
+    @apply relative bg-game-secondary/50 backdrop-blur-sm rounded-lg border border-gray-700/50 shadow-xl transition-all duration-300 hover:shadow-2xl hover:shadow-game-accent/10 hover:border-game-accent/50;
+  }
+
+  .game-card {
+    @apply relative overflow-hidden rounded-lg transition-all duration-500 transform hover:scale-105;
+  }
+
+  .game-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300;
+  }
+
+  .game-card:hover::before {
+    @apply opacity-100;
+  }
+
+  .game-card img {
+    @apply transition-transform duration-500;
+  }
+
+  .game-card:hover img {
+    @apply scale-110;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  .glass-effect {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px theme('colors.game-accent');
+  }
+  50% {
+    box-shadow: 0 0 40px theme('colors.game-accent');
+  }
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-game-accent to-purple-500;
+}
+
+.nav-link {
+  @apply relative overflow-hidden;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-game-accent transition-all duration-300;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.stat-card {
+  @apply relative overflow-hidden;
+}
+
+.stat-card::before {
+  content: '';
+  @apply absolute -inset-1 bg-gradient-to-r from-game-accent to-purple-500 rounded-lg blur opacity-25 transition-opacity duration-300;
+}
+
+.stat-card:hover::before {
+  @apply opacity-75;
+}
